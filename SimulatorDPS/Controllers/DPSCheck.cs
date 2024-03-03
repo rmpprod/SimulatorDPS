@@ -7,16 +7,17 @@ namespace SimulatorDPS.Controllers
     public class DPSCheck
     {
         [HttpGet]
-        public double Get()
+        public string Get()
         {
             var fight = new Fight
             {
                 Duration = 120,
-                BossHealth = 3000000,
-                Class = new Warrior(new Axe(2200, 3.27))
+                Character = new Warrior(new Axe(2200, 3.27), 200, 170),
+                Boss = new Boss("Anubis", 3000000)
             };
 
-            return fight.Class.DPS() * fight.Duration;
+            var fightResult = fight.FightSimulation();
+            return fightResult.ToString();
         }
     }
 }
