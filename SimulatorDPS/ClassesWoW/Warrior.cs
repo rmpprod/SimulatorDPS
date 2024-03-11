@@ -1,19 +1,21 @@
-﻿using SimulatorDPS.Models;
+﻿using SimulatorDPS.Interfaces;
 
-namespace SimulatorDPS
+namespace SimulatorDPS.ClassesWoW
 {
     public class Warrior : ICharacter
     {
-        public Warrior(IWeapon weapon, int exp = 0, int hr = 0)
+        public Warrior(IWeapon weapon, int exp = 0, int hr = 0, double glansing = 24)
         {
             Weapon = weapon;
             Expertise = exp;
             HitRating = hr;
+            GlansingBLow = glansing;
         }
         public string Name => "Warrior";
         public IWeapon Weapon { get; private set; }
         public int Expertise { get; private set; }
         public int HitRating { get; private set; }
+        public double GlansingBLow { get; private set; }
         public double DPS()
         {
             return Weapon.Damage / Weapon.Speed;
@@ -33,7 +35,7 @@ namespace SimulatorDPS
         {
             double reduceChance = 0;
 
-            if(Expertise != 0)
+            if (Expertise != 0)
             {
                 reduceChance = Math.Truncate(Expertise / 7.6886) * 0.25;
             }

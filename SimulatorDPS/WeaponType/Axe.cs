@@ -1,6 +1,6 @@
-﻿using SimulatorDPS.Models;
+﻿using SimulatorDPS.Interfaces;
 
-namespace SimulatorDPS
+namespace SimulatorDPS.WeaponType
 {
     public class Axe : IWeapon
     {

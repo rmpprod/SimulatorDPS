@@ -1,4 +1,4 @@
-﻿namespace SimulatorDPS.Models
+﻿namespace SimulatorDPS.Interfaces
 {
     public interface ICharacter
     {
@@ -6,6 +6,7 @@
         double DPS();
         double ChanceToMiss();
         double DodgeAndParryReduceChance();
+        double GlansingBLow { get; }
         IWeapon Weapon { get; }
     }
 }

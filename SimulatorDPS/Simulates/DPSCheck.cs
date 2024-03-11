@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SimulatorDPS.ClassesWoW;
+using SimulatorDPS.Encounters;
+using SimulatorDPS.WeaponType;
 
-namespace SimulatorDPS.Controllers
+namespace SimulatorDPS.Simulates
 {
     [ApiController]
     [Route("[controller]")]
@@ -12,7 +15,7 @@ namespace SimulatorDPS.Controllers
             var fight = new Fight
             {
                 Duration = 120,
-                Character = new Warrior(new Axe(2200, 3.27), 200, 170),
+                Character = new Warrior(new Axe(2200, 3.27)),
                 Boss = new Boss("Anubis", 3000000)
             };
 

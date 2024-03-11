@@ -1,6 +1,7 @@
-﻿using SimulatorDPS.Models;
+﻿using SimulatorDPS.MechanicsWoW;
+using SimulatorDPS.Interfaces;
 
-namespace SimulatorDPS
+namespace SimulatorDPS.Encounters
 {
     public class Fight
     {
@@ -13,7 +14,8 @@ namespace SimulatorDPS
             {
                 MissChance = Character.ChanceToMiss(),
                 DodgeChance = Boss.DodgeChance > Character.DodgeAndParryReduceChance() ? Boss.DodgeChance - Character.DodgeAndParryReduceChance() : 0,
-                ParryChance = Boss.ParryChance > Character.DodgeAndParryReduceChance() ? Boss.ParryChance - Character.DodgeAndParryReduceChance() : 0
+                ParryChance = Boss.ParryChance > Character.DodgeAndParryReduceChance() ? Boss.ParryChance - Character.DodgeAndParryReduceChance() : 0,
+                GlansingBlow = Character.GlansingBLow
             };
         }
         public double RollOnHit()
@@ -25,17 +27,22 @@ namespace SimulatorDPS
         }
         public FightResult FightSimulation()
         {
-            var fightResult = new FightResult() { Duration = Duration};
+            var fightResult = new FightResult() { Duration = Duration };
             var numbersOfAttacks = (int)Math.Truncate(Duration / Character.Weapon.Speed);
             var hitTable = GetHitTable();
             var loseHitChance = hitTable.LoseHitChance();
 
-            for(int i = numbersOfAttacks; i > 0; i--)
+            for (int i = numbersOfAttacks; i > 0; i--)
             {
                 var rndNum = RollOnHit();
-                if(rndNum > loseHitChance)
+                if (rndNum > loseHitChance)
                 {
-                    fightResult.TotalDamage += Character.Weapon.Damage;
+                    if (rndNum > (loseHitChance + hitTable.GlansingBlow))
+                    {
+                        fightResult.TotalDamage += Character.Weapon.Damage;
+                        continue;
+                    }
+                    fightResult.TotalDamage += Character.Weapon.Damage * 0.75;
                 }
             }
             return fightResult;

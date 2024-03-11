@@ -1,4 +1,4 @@
-﻿namespace SimulatorDPS
+﻿namespace SimulatorDPS.Encounters
 {
     public class FightResult
     {

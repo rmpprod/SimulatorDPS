@@ -1,4 +1,4 @@
-﻿namespace SimulatorDPS.Models
+﻿namespace SimulatorDPS.Interfaces
 {
     public interface IWeapon
     {
