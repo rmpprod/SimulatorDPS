@@ -15,7 +15,8 @@ namespace SimulatorDPS.Encounters
                 MissChance = Character.ChanceToMiss(),
                 DodgeChance = Boss.DodgeChance > Character.DodgeAndParryReduceChance() ? Boss.DodgeChance - Character.DodgeAndParryReduceChance() : 0,
                 ParryChance = Boss.ParryChance > Character.DodgeAndParryReduceChance() ? Boss.ParryChance - Character.DodgeAndParryReduceChance() : 0,
-                GlansingBlow = Character.GlansingBLow
+                GlansingBlow = Character.GlansingBLow,
+                CriticalHit = Character.CriticalHit
             };
         }
         public double RollOnHit()
@@ -37,9 +38,14 @@ namespace SimulatorDPS.Encounters
                 var rndNum = RollOnHit();
                 if (rndNum > loseHitChance)
                 {
-                    if (rndNum > (loseHitChance + hitTable.GlansingBlow))
+                    if (rndNum > (loseHitChance + hitTable.GlansingBlow + hitTable.CriticalHit))
                     {
                         fightResult.TotalDamage += Character.Weapon.Damage;
+                        continue;
+                    }
+                    else if (rndNum > (loseHitChance + hitTable.GlansingBlow))
+                    {
+                        fightResult.TotalDamage += Character.Weapon.Damage * 2;
                         continue;
                     }
                     fightResult.TotalDamage += Character.Weapon.Damage * 0.75;

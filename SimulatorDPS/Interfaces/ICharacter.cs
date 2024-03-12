@@ -7,6 +7,7 @@
         double ChanceToMiss();
         double DodgeAndParryReduceChance();
         double GlansingBLow { get; }
+        double CriticalHit { get; }
         IWeapon Weapon { get; }
     }
 }

@@ -4,18 +4,20 @@ namespace SimulatorDPS.ClassesWoW
 {
     public class Warrior : ICharacter
     {
-        public Warrior(IWeapon weapon, int exp = 0, int hr = 0, double glansing = 24)
+        public Warrior(IWeapon weapon, int exp = 0, int hr = 0, double glansing = 24, double criticalHit = 5)
         {
             Weapon = weapon;
             Expertise = exp;
             HitRating = hr;
             GlansingBLow = glansing;
+            CriticalHit = criticalHit;
         }
         public string Name => "Warrior";
         public IWeapon Weapon { get; private set; }
         public int Expertise { get; private set; }
         public int HitRating { get; private set; }
         public double GlansingBLow { get; private set; }
+        public double CriticalHit { get; private set; }
         public double DPS()
         {
             return Weapon.Damage / Weapon.Speed;

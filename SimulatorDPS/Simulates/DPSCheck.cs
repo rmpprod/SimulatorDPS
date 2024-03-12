@@ -15,7 +15,7 @@ namespace SimulatorDPS.Simulates
             var fight = new Fight
             {
                 Duration = 120,
-                Character = new Warrior(new Axe(2200, 3.27)),
+                Character = new Warrior(new Axe(2200, 3.27),200,249,criticalHit:15),
                 Boss = new Boss("Anubis", 3000000)
             };
 
