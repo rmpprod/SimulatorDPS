@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SimulatorDPS.ClassesWoW;
 using SimulatorDPS.Encounters;
-using SimulatorDPS.WeaponType;
+using SimulatorDPS.Services;
 
 namespace SimulatorDPS.Simulates
 {
@@ -10,12 +9,12 @@ namespace SimulatorDPS.Simulates
     public class DPSCheck
     {
         [HttpGet]
-        public string Get()
+        public string GetSimulationDPS(string name)
         {
             var fight = new Fight
             {
                 Duration = 120,
-                Character = new Warrior(new Axe(2200, 3.27),200,249,criticalHit:15),
+                Character = new CharacterFinder().FindCharacter(name),
                 Boss = new Boss("Anubis", 3000000)
             };
 

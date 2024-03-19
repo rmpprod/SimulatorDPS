@@ -1,0 +1,9 @@
+{"Name":"ninja","Weapon":null,"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"misha","Weapon":null,"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"Kaej","Weapon":null,"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"jnisha","Weapon":{"Damage":2200.0,"Speed":3.1},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"noaa","Weapon":{"Damage":0.0,"Speed":0.0},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"rogue","Weapon":{"$type":"SimulatorDPS.WeaponType.Axe, SimulatorDPS","Damage":3300.0,"Speed":3.1},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"$type":"SimulatorDPS.ClassesWoW.Character, SimulatorDPS","Name":"rmh","Weapon":{"$type":"SimulatorDPS.WeaponType.Axe, SimulatorDPS","Damage":3300.0,"Speed":3.1},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"jeff","Weapon":{"Damage":3300.0,"Speed":2.7},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"snake","Weapon":{"Damage":3200.0,"Speed":3.2},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}

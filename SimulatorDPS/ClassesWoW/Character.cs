@@ -1,18 +1,20 @@
 ﻿using SimulatorDPS.Interfaces;
+using SimulatorDPS.WeaponType;
 
 namespace SimulatorDPS.ClassesWoW
 {
-    public class Warrior : ICharacter
+    public class Character : ICharacter
     {
-        public Warrior(IWeapon weapon, int exp = 0, int hr = 0, double glansing = 24, double criticalHit = 5)
+        public Character(string name, IWeapon weapon = null, int exp = 0, int hr = 0, double glansing = 24, double criticalHit = 5)
         {
+            Name = name;
             Weapon = weapon;
             Expertise = exp;
             HitRating = hr;
             GlansingBLow = glansing;
             CriticalHit = criticalHit;
         }
-        public string Name => "Warrior";
+        public string Name { get; private set; }
         public IWeapon Weapon { get; private set; }
         public int Expertise { get; private set; }
         public int HitRating { get; private set; }

@@ -31,3 +31,5 @@ C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\obj\Debug\net7.0\refint\S
 C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\obj\Debug\net7.0\SimulatorDPS.pdb
 C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\obj\Debug\net7.0\SimulatorDPS.genruntimeconfig.cache
 C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\obj\Debug\net7.0\ref\SimulatorDPS.dll
+C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\bin\Debug\net7.0\DataBaseTXT\DB.json
+C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\bin\Debug\net7.0\Newtonsoft.Json.dll
