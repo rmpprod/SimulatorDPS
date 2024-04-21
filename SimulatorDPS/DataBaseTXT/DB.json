@@ -1,2 +1,3 @@
 {"Name":"jeff","Weapon":{"Damage":0.0,"Speed":0.0},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
-{"Name":"snake","Weapon":{"Damage":3200.0,"Speed":3.1},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"Warrior","Weapon":{"Damage":3200.0,"Speed":3.1},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}
+{"Name":"Warrior","Abilities":[{"Cost":30,"Cooldown":6,"IsReady":true,"BaseDamage":0,"ExtraDamage":418}],"Weapon":{"Damage":0.0,"Speed":0.0},"Expertise":0,"HitRating":0,"GlansingBLow":24.0,"CriticalHit":5.0}

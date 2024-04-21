@@ -1,6 +1,6 @@
 ﻿namespace SimulatorDPS.MechanicsWoW
 {
-    public class HitTable
+    public class WhiteAttackHitTable
     {
         public double MissChance { get; set; }
         public double DodgeChance { get; set; }

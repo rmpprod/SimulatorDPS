@@ -33,3 +33,4 @@ C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\obj\Debug\net7.0\Simulato
 C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\obj\Debug\net7.0\ref\SimulatorDPS.dll
 C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\bin\Debug\net7.0\DataBaseTXT\DB.json
 C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\noname\source\repos\SimulatorDPS\SimulatorDPS\bin\Debug\net7.0\DataBaseTXT\DictionaryDB.json

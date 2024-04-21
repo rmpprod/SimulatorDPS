@@ -1,11 +1,12 @@
 ﻿using SimulatorDPS.Interfaces;
-using SimulatorDPS.WeaponType;
+using SimulatorDPS.SpellSetter_s;
 
 namespace SimulatorDPS.ClassesWoW
 {
     public class Character : ICharacter
     {
-        public Character(string name, IWeapon weapon = null, int exp = 0, int hr = 0, double glansing = 24, double criticalHit = 5)
+        ISpellSetter? SpellSetter;
+        public Character(ISpellSetter? spellSetter, string name = null, IWeapon weapon = null, int exp = 0, int hr = 0, double glansing = 24, double criticalHit = 5)
         {
             Name = name;
             Weapon = weapon;
@@ -13,8 +14,10 @@ namespace SimulatorDPS.ClassesWoW
             HitRating = hr;
             GlansingBLow = glansing;
             CriticalHit = criticalHit;
+            SpellSetter = spellSetter;
         }
         public string Name { get; private set; }
+        public List<IAbility> Abilities { get; private set; } = new List<IAbility>();
         public IWeapon Weapon { get; private set; }
         public int Expertise { get; private set; }
         public int HitRating { get; private set; }
@@ -44,6 +47,10 @@ namespace SimulatorDPS.ClassesWoW
                 reduceChance = Math.Truncate(Expertise / 7.6886) * 0.25;
             }
             return reduceChance;
+        }
+        public void DownloadSpells()
+        {
+            SpellSetter.SetSpells(this);
         }
     }
 }

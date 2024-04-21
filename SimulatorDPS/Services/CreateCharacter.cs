@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SimulatorDPS.ClassesWoW;
+using SimulatorDPS.SpellSetter_s;
 using SimulatorDPS.WeaponType;
 
 namespace SimulatorDPS.Services
@@ -10,9 +11,10 @@ namespace SimulatorDPS.Services
     public class CreateCharacter
     {
         [HttpGet]
-        public Character GetCharacter(string name, int dmg = 0, double speed = 0)
+        public Character GetCharacter([FromServices] ISpellSetter spellSetter, string name, int dmg = 0, double speed = 0)
         {
-            var charWow = new Character(name, new Axe(dmg, speed));
+            var charWow = new Character(spellSetter, name, new Axe(dmg, speed));
+            charWow.DownloadSpells();
 
             using (var writer = new StreamWriter("DataBaseTXT/DB.json", true))
             {

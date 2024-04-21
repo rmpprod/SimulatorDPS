@@ -1,3 +1,5 @@
+using SimulatorDPS.SpellSetter_s;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<ISpellSetter, DefaultSpellSetter>();
+//builder.Services.AddSingleton<Character>();
 
 var app = builder.Build();
 
