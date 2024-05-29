@@ -1,4 +1,5 @@
-using SimulatorDPS.SpellSetter_s;
+using SimulatorDPS.DataBaseEF;
+using SimulatorDPS.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ISpellSetter, DefaultSpellSetter>();
-//builder.Services.AddSingleton<Character>();
+builder.Services.AddSqlite<ApplicationContext>("Data Source=simulatordps.db");
+builder.Services.AddTransient<CharacterService>();
 
 var app = builder.Build();
 
