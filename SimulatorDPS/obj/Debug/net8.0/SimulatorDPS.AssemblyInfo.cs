@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimulatorDPS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+952a0ae985e98b618e28cdb2dcb752e5f28742e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf72ca7378ad9f90cc818e7f72049ecd869e3529")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimulatorDPS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimulatorDPS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

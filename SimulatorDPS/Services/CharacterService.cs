@@ -1,4 +1,6 @@
-﻿using SimulatorDPS.ClassesWoW;
+﻿using Microsoft.EntityFrameworkCore;
+using SimulatorDPS.ClassesWoW;
+using SimulatorDPS.Core.Gear;
 using SimulatorDPS.DataBaseEF;
 using SimulatorDPS.Encounters;
 using SimulatorDPS.Models;
@@ -15,7 +17,7 @@ namespace SimulatorDPS.Services
 
         public CharacterModel Get(string name)
         {
-            var character = _dbContext.Characters.FirstOrDefault(c => c.Name == name);
+            var character = _dbContext.Characters.Include(c => c.Gear).Where(c => c.Name == name).FirstOrDefault();
             return new CharacterModel
             {
                 Id = character.Id,
@@ -37,12 +39,13 @@ namespace SimulatorDPS.Services
             _dbContext.SaveChanges();
 
             characterModel.Id = character.Id;
+
             return characterModel;
         }
 
         public string Sim(string name)
         {
-            var character = _dbContext.Characters.FirstOrDefault(c => c.Name == name);
+            var character = _dbContext.Characters.Include(c => c.Gear).Where(c => c.Name == name).FirstOrDefault();
             var responce = new Sim(character).ToString();
             return responce;
         }

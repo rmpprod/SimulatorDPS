@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSqlite<ApplicationContext>("Data Source=simulatordps.db");
 builder.Services.AddTransient<CharacterService>();
+builder.Services.AddTransient<GearService>();
 
 var app = builder.Build();
 

@@ -9,9 +9,11 @@ namespace SimulatorDPS.Controllers
     public class CharacterController
     {
         private CharacterService _characterService;
-        public CharacterController(CharacterService characterService)
+        private GearService _gearService;
+        public CharacterController(CharacterService characterService, GearService gearService)
         {
             _characterService = characterService;
+            _gearService = gearService;
         }
 
         [HttpGet]
@@ -26,12 +28,17 @@ namespace SimulatorDPS.Controllers
             var newCharacter = _characterService.Create(characterModel);
             return Results.Ok(newCharacter);
         }
-        [HttpGet]
-        [Route("Sim")]
+        [HttpGet("sim")]
         public IResult GetSim(string name)
         {
             var simDamage = _characterService.Sim(name);
             return Results.Ok(simDamage);
+        }
+        [HttpPost("createGear")]
+        public IResult CreateGear(GearModel gearModel)
+        {
+            var gear = _gearService.Create(gearModel);
+            return Results.Ok(gear);
         }
     }
 }

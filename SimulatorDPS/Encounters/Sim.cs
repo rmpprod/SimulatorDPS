@@ -22,7 +22,7 @@ namespace SimulatorDPS.Encounters
             
             for (int i = 0; i < 60; i++)
             {
-                if (lastTimeAttack + characterStats.MeleeStats.MeleeDamage.Speed > i)
+                if (lastTimeAttack + characterStats.MeleeStats.MeleeDamage.Speed < i)
                 {
                     dmg += success.SuccessHit();
                     lastTimeAttack = i;

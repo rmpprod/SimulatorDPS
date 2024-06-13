@@ -8,9 +8,9 @@ namespace SimulatorDPS.DataBaseEF
     {
         public DbSet<Character> Characters { get; set; }
         public DbSet<Gear> Gears { get; set; }
-        public DbSet<MainHand> MainHands { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> contextOptions) : base(contextOptions)
         {
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
     }
