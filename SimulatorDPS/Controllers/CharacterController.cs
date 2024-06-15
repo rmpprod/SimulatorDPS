@@ -34,7 +34,7 @@ namespace SimulatorDPS.Controllers
             var simDamage = _characterService.Sim(name);
             return Results.Ok(simDamage);
         }
-        [HttpPost("createGear")]
+        [HttpPost("creategear")]
         public IResult CreateGear(GearModel gearModel)
         {
             var gear = _gearService.Create(gearModel);

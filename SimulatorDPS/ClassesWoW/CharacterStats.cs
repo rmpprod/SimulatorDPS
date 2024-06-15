@@ -1,4 +1,6 @@
-﻿using SimulatorDPS.Core.Stats;
+﻿using SimulatorDPS.Core;
+using SimulatorDPS.Core.Stats;
+using SimulatorDPS.Core.Stats.Warrior;
 using SimulatorDPS.WoWHeadScrapper;
 
 namespace SimulatorDPS.ClassesWoW
@@ -7,44 +9,66 @@ namespace SimulatorDPS.ClassesWoW
     {
         public BaseStats BaseStats { get; set; }
         public MeleeStats MeleeStats { get; set; }
+        private MeleeStats gearMeleeStats;
 
         public CharacterStats(Character character)
         {
+            CalcBaseStats(character.Class, character.Race);
             var gearStats = new GearStats(new GearConverter(character.Gear).gearJson);
-            var baseStats = new BaseStatsSetter().Set(character.Class, character.Race);
-            var meleeStats = new MeleeStats
-            {
-                MeleeDamage = new MeleeDamage(),
-                AttackRating = 305,
-                HitChance = 0,
-                CritChance = 4,
-                MeleeAttackPower = 400,
-            };
-            CalcStats(gearStats.gearStats, baseStats, meleeStats);
+            CalcStats(gearStats.gearStats);
+            CalcMeleeStats(character.Class);
         }
 
-        private void CalcStats(Dictionary<string, ItemStats> gearStats, BaseStats baseStats, MeleeStats meleeStats)
+        private void CalcStats(Dictionary<string, ItemStats> gearStats)
         {
+            gearMeleeStats = new MeleeStats
+            {
+                MeleeDamage = new MeleeDamage()
+            };
             foreach (var item in gearStats)
             {
-                baseStats.Strength += item.Value.strength;
-                baseStats.Agility += item.Value.agility;
-                baseStats.Stamina += item.Value.stamina;
-                baseStats.Intellect += item.Value.intellect;
-                baseStats.Spirit += item.Value.spirit;
+                BaseStats.Strength += item.Value.strength;
+                BaseStats.Agility += item.Value.agility;
+                BaseStats.Stamina += item.Value.stamina;
+                BaseStats.Intellect += item.Value.intellect;
+                BaseStats.Spirit += item.Value.spirit;
 
-                meleeStats.HitChance += item.Value.meleeHit;
-                meleeStats.CritChance += item.Value.meleeCrit;
-                meleeStats.MeleeAttackPower += item.Value.meleeAttackPower;
+                gearMeleeStats.HitChance += item.Value.meleeHit;
+                gearMeleeStats.CritChance += item.Value.meleeCrit;
+                gearMeleeStats.MeleeAttackPower += item.Value.meleeAttackPower;
                 
                 if(item.Key == "MainHand")
                 {
-                    meleeStats.MeleeDamage.MinDamage = item.Value.minDmg;
-                    meleeStats.MeleeDamage.MaxDamage = item.Value.maxDmg;
-                    meleeStats.MeleeDamage.Speed = item.Value.speed;
+                    gearMeleeStats.MeleeDamage.MinDamage = item.Value.minDmg;
+                    gearMeleeStats.MeleeDamage.MaxDamage = item.Value.maxDmg;
+                    gearMeleeStats.MeleeDamage.Speed = item.Value.speed;
                 }
             }
-            BaseStats = baseStats;
+        }
+
+        private void CalcBaseStats(CharacterClass characterClass, Race race)
+        {
+            var baseStats = characterClass switch
+            {
+                CharacterClass.Warrior => new WarriorBaseStats().warriorBaseStats[(int)race]
+            };
+
+            BaseStats = new BaseStats
+            {
+                Strength = baseStats[0],
+                Agility = baseStats[1],
+                Stamina = baseStats[2],
+                Intellect = baseStats[3],
+                Spirit = baseStats[4]
+            };
+        }
+
+        private void CalcMeleeStats(CharacterClass characterClass)
+        {
+            var meleeStats = characterClass switch
+            {
+                CharacterClass.Warrior => new WarriorMeleeStats(BaseStats, gearMeleeStats).MeleeStats
+            };
             MeleeStats = meleeStats;
         }
     }
