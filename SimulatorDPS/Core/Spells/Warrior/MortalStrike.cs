@@ -1,16 +1,23 @@
-﻿namespace SimulatorDPS.Core.Spells.Warrior
+﻿using SimulatorDPS.CalcStats;
+using SimulatorDPS.ClassesWoW;
+
+namespace SimulatorDPS.Core.Spells.Warrior
 {
-    public class MortalStrike
+    public class MortalStrike : Spell
     {
-        public SpellResult RegisterMortalStrike()
+        public MortalStrike(CharacterStats characterStats, SpellOptions spellOptions) : base(characterStats, spellOptions)
         {
-            var spellConfig = new SpellConfig
+        }
+
+        public override SpellResult Cast()
+        {
+            var plusDmg = 160;
+            var weaponDmg = new NormalizedDamage().CalcNormalizedHit(Character);
+            Console.WriteLine("MS");
+            return new SpellResult
             {
-                SpellType = SpellType.Damage,
-                Cooldown = 6,
-                Cost = 30
+                SpellDamage = plusDmg + weaponDmg
             };
-            return new SpellResult();
         }
     }
 }

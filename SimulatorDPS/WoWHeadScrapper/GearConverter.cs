@@ -1,7 +1,6 @@
 ﻿using HtmlAgilityPack;
 using ScrapySharp.Extensions;
 using SimulatorDPS.Core.Gear;
-using SimulatorDPS.Models;
 
 namespace SimulatorDPS.WoWHeadScrapper
 {
@@ -19,7 +18,7 @@ namespace SimulatorDPS.WoWHeadScrapper
         {
             var web = new HtmlWeb();
 
-            foreach (var id in gear.GetType().GetProperties())
+            foreach(var id in gear.GetType().GetProperties())
             {
                 if(id.PropertyType == typeof(int?) && (int)id.GetValue(gear) != 0)
                 {

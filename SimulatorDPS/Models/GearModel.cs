@@ -2,8 +2,8 @@
 {
     public class GearModel
     {
-        public int? Id { get; set; }
-        public int? CharacterId { get; set; }
+        public int Id { get; set; }
+        public int CharacterId { get; set; }
 
         public int? Head { get; set; }
         public int? Neck { get; set; }

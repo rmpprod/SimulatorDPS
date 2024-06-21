@@ -40,5 +40,11 @@ namespace SimulatorDPS.Controllers
             var gear = _gearService.Create(gearModel);
             return Results.Ok(gear);
         }
+        [HttpPatch("updategear")]
+        public IResult UpdateGear(GearModel gearModel)
+        {
+            var gear = _gearService.Update(gearModel);
+            return Results.Ok(gear);
+        }
     }
 }

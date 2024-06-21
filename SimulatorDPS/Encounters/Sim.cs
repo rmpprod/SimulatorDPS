@@ -1,5 +1,6 @@
 ﻿using SimulatorDPS.CalcStats;
 using SimulatorDPS.ClassesWoW;
+using SimulatorDPS.Core.Spells.Warrior;
 
 namespace SimulatorDPS.Encounters
 {
@@ -16,13 +17,15 @@ namespace SimulatorDPS.Encounters
             var characterStats = new CharacterStats(character);
             var meleeAT = new MeleeAttackTable(characterStats);
             var success = new SuccessHitDamage(characterStats.MeleeStats.MeleeDamage.MinDamage, characterStats.MeleeStats.MeleeDamage.MaxDamage, meleeAT);
+            var charRotation = new WarriorRotation(new WarriorSpells(characterStats).warriorSpells);
             
-            double lastTimeAttack = 0;
+            double lastTimeAttack = -1;
             double dmg = 0;
             
-            for (int i = 0; i < 60; i++)
+            for (double i = 0; i < 60; i+=0.1)
             {
-                if (lastTimeAttack + characterStats.MeleeStats.MeleeDamage.Speed < i)
+                dmg += charRotation.Rotation(i).SpellDamage;
+                if (lastTimeAttack + characterStats.MeleeStats.MeleeDamage.Speed < i || lastTimeAttack == -1)
                 {
                     dmg += success.SuccessHit();
                     lastTimeAttack = i;

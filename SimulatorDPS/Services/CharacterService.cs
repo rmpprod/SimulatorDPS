@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SimulatorDPS.ClassesWoW;
-using SimulatorDPS.Core.Gear;
 using SimulatorDPS.DataBaseEF;
 using SimulatorDPS.Encounters;
 using SimulatorDPS.Models;
