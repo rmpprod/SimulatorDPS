@@ -1,5 +1,7 @@
 ﻿using HtmlAgilityPack;
+
 using ScrapySharp.Extensions;
+
 using SimulatorDPS.Core.Gear;
 
 namespace SimulatorDPS.WoWHeadScrapper
