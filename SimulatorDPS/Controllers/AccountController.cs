@@ -33,6 +33,19 @@ namespace SimulatorDPS.Controllers
             return Results.Ok(newUser);
         }
 
+        [HttpPatch]
+        public IResult UpdateUser([FromBody] UserModel userModel)
+        {
+            var user = _userService.UpdateUser(userModel.Id, userModel.UserName);
+            return Results.Ok(user);
+        }
+
+        [HttpDelete]
+        public IResult DeleteUser([FromBody] UserModel userModel)
+        {
+            var deleteUser = _userService.DeleteUser(userModel.Id, userModel.UserName);
+            return Results.Ok(deleteUser);
+        }
         [AllowAnonymous]
         [HttpPost("token")]
         public IResult GetToken()

@@ -1,5 +1,6 @@
 ﻿using SimulatorDPS.Core;
 using SimulatorDPS.Core.Gear;
+using SimulatorDPS.Data;
 
 namespace SimulatorDPS.ClassesWoW
 {
@@ -10,6 +11,9 @@ namespace SimulatorDPS.ClassesWoW
 
         public CharacterClass Class { get; set; }
         public Race Race { get; set; }
+
+        public int UserId { get; set; }
+        public User? User { get; set; }
 
         public Gear? Gear { get; set; }
     }

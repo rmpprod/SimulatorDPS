@@ -42,7 +42,21 @@ namespace SimulatorDPS.Services
 
             return characterModel;
         }
+        
+        public DeleteCharacterModel Delete(DeleteCharacterModel model)
+        {
+            var currentCharacter = _dbContext.Characters.FirstOrDefault(c => c.Id == model.Id);
 
+            if (currentCharacter != null)
+            {
+                _dbContext.Characters.Remove(currentCharacter);
+                _dbContext.SaveChanges();
+            }
+
+            return model;
+        }
+
+        public List<CharacterModel> GetAllUserCharacters()
         public string Sim(string name)
         {
             var character = _dbContext.Characters.Include(c => c.Gear).Where(c => c.Name == name).FirstOrDefault();

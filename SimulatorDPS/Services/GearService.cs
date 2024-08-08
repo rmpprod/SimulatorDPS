@@ -72,5 +72,18 @@ namespace SimulatorDPS.Services
             
             return gearModel;
         }
+
+        public DeleteGearModel Delete(DeleteGearModel model)
+        {
+            var currentGear = _dbContext.Gears.FirstOrDefault(g => g.Id == model.Id);
+
+            if (currentGear != null)
+            {
+                _dbContext.Gears.Remove(currentGear);
+                _dbContext.SaveChanges();
+            }
+
+            return model;
+        }
     }
 }

@@ -86,6 +86,38 @@ namespace SimulatorDPS.Services
             };
         }
         
+        public UserModel UpdateUser(int id, string name)
+        {
+            var userToUpdate = _dbContext.Users.FirstOrDefault(u =>  u.Id == id);
+            
+            if (userToUpdate != null)
+            {
+                userToUpdate.UserName = name;
+            }
+
+            return new UserModel
+            {
+                Id = id,
+                UserName = name,
+            };
+        }
+
+        public UserModel DeleteUser(int id, string name)
+        {
+            var currentUser = _dbContext.Users.FirstOrDefault(u => u.Id == id);
+
+            if (currentUser != null)
+            {
+                _dbContext.Users.Remove(currentUser);
+                _dbContext.SaveChanges();
+            }
+
+            return new UserModel
+            {
+                Id = id,
+                UserName = name
+            };
+        }
         public TokenModel CreateJWToken(ClaimsIdentity identity)
         {
             var claim = identity.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
